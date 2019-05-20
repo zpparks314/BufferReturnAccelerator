@@ -1,0 +1,2 @@
+add_xacc_test(BufferReturnAccelerator)
+target_link_libraries(BufferReturnAcceleratorTester)

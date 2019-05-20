@@ -1,0 +1,6 @@
+{
+  "bundle.symbolic_name" : "buffer_return_accelerator",
+  "bundle.activator" : true,
+  "bundle.name" : "BufferReturn Accelerator",
+  "bundle.description" : "This bundle provides an Accelerator that returns and identical buffer from file. Used for RDM re-generation."
+}
