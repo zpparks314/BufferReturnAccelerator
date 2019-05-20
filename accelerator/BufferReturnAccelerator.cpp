@@ -18,18 +18,6 @@ std::shared_ptr<AcceleratorBuffer> BufferReturnAccelerator::createBuffer(const s
 
 bool BufferReturnAccelerator::isValidBufferSize(const int nBits) { return nBits <= 1000; }
 
-// const std::vector<std::shared_ptr<AcceleratorBuffer>> BufferReturnAccelerator::execute(
-//                                       std::shared_ptr<AcceleratorBuffer> buffer,
-//                                       const std::vector<std::shared_ptr<Function>> functions,
-//                                       std::vector<double> _params) {
-//                     for (auto &p : _params){
-//                         params.push_back(ExtraInfo(p));
-//                     }
-//                     auto buffers = execute(buffer, functions);
-//                     return buffers;
-//             }
-
-
 std::vector<std::shared_ptr<AcceleratorBuffer>> BufferReturnAccelerator::execute(
                                       std::shared_ptr<AcceleratorBuffer> buffer,
                                       const std::vector<std::shared_ptr<Function>> functions) {
@@ -47,14 +35,6 @@ std::vector<std::shared_ptr<AcceleratorBuffer>> BufferReturnAccelerator::execute
                     auto loadedBuffer = std::make_shared<AcceleratorBuffer>();
                     loadedBuffer->load(is);
 
-                    // for (auto &fun : functions){
-                    //     xacc::info(fun->toString("q"));
-                    //     xacc::info("numparams: " + std::to_string(fun->nParameters()));
-                    //     if (fun->nParameters() > 0){
-                    //     auto param = fun->getParameter(0).as<std::complex<double>>();
-                    //     xacc::info("param" + std::to_string(param.real()));
-                    //     }
-                    // }
                     std::vector<std::vector<double>> params;
                     auto paramStr = xacc::getOption("return-params");
                     xacc::info(paramStr);
@@ -63,10 +43,6 @@ std::vector<std::shared_ptr<AcceleratorBuffer>> BufferReturnAccelerator::execute
                         params.push_back({std::stod(s)});
                     }
 
-                    // auto testParams = loadedBuffer->getAllUnique("parameters");
-                    // for (auto &m : testParams){
-                    //     std::cout << m.index() << std::endl;
-                    // }
                     for (auto &p : params) {
                         std::vector<std::shared_ptr<AcceleratorBuffer>> add;
                         auto children = loadedBuffer->getChildren("parameters", p);
@@ -80,9 +56,5 @@ std::vector<std::shared_ptr<AcceleratorBuffer>> BufferReturnAccelerator::execute
                     return returnBuffers;
 
 }
-
-// void BufferReturnAccelerator::execute(std::shared_ptr<AcceleratorBuffer> buffer, const std::shared_ptr<Function> kernel) {
-
-// }
 
 }}

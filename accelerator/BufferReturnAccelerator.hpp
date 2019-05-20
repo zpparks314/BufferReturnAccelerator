@@ -34,9 +34,6 @@ public:
         auto buffers = execute(buffer, std::vector<std::shared_ptr<xacc::Function>>{kernel});
     }
 
-// const std::vector<std::shared_ptr<AcceleratorBuffer>> execute(std::shared_ptr<AcceleratorBuffer> buffer,
-//                 const std::vector<std::shared_ptr<Function>> functions, std::vector<double> _params);
-
 std::vector<std::shared_ptr<AcceleratorBuffer>> execute(
                 std::shared_ptr<AcceleratorBuffer> buffer,
                 const std::vector<std::shared_ptr<Function>> functions) override;
@@ -62,8 +59,5 @@ std::vector<std::shared_ptr<AcceleratorBuffer>> execute(
 
 };
 }}
-
-
-
 
 #endif
